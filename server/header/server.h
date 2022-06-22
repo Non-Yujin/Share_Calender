@@ -9,21 +9,27 @@
 #include <sys/epoll.h>
 #include <string.h>
 #include "event.h"
+#include "recv.h"
+#include "udata.h"
 
 
-class Server : public Event
+class Server : public Event, public Recv
 {
     public:
-        Server(int port_num) {}
+        Server(int port_num) : port(port_num) 
+        {}
         ~Server() {}
-        void Main();
+        void Main_Func();
         void Accept();
-
+        void Disconnect();
+        
     private:
-        struct sockaddr_in clientaddr;
+        struct sockaddr_in client_addr;
         socklen_t clnt_len;
-        int port, client_fd;
-        int event_cnt;
+        udata *user_data;
+        int port, client_fd, read_cnt, i;
+        char buf[1024];
+        
 
 };
 
