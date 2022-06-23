@@ -10,7 +10,7 @@ void Event::Create_event()
 void Event::Set_event()
 {
     ev.events = EPOLLIN;
-    ev.data.fd = listen.fd;
+    ev.data.fd = listen_fd;
     epoll_ctl(epoll_fd, EPOLL_CTL_ADD, listen_fd, &ev);
     memset(user_fds, -1, sizeof(int) * 1024);
 }

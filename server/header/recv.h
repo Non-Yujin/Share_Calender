@@ -3,14 +3,16 @@
 
 #include <string>
 #include <cstring>
-#include "header/udata.h"
+#include "udata.h"
+
+using namespace std;
 
 class Recv
 {
     public:
         Recv(){}
         ~Recv() {}
-        void Recv_main(Server serv, char* clnt_msg);
+        void Recv_main(string clnt_msg);
         void login();
         void sign_up();
 

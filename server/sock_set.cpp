@@ -10,7 +10,7 @@ void Sock_set::Set_listen_fd()
 
 void Sock_set::Bind_addr()
 {
-    if(bind(listen_fd, (struct sockaddr *)&addr, addrlen) == -1))
+    if(bind(listen_fd, (struct sockaddr *)&addr, addrlen) == -1)
         exit(1);
 }
 

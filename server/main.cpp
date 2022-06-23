@@ -12,7 +12,7 @@ int main(int argc, char * argv[])
     }
     Server serv(9010);
 
-    serv.Main();
+    serv.Main_Func();
     
 
     return 0;

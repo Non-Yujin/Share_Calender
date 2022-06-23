@@ -1,6 +1,8 @@
 #include "header/recv.h"
 
-void Recv::Recv_main(Server &serv, string msg)
+using namespace std;
+
+void Recv::Recv_main(string msg)
 {
     clnt_msg = msg;
     if(clnt_msg.find("login") != string::npos)
@@ -11,4 +13,14 @@ void Recv::Recv_main(Server &serv, string msg)
     {
         sign_up();
     }
+}
+
+void Recv::login()
+{
+
+}
+
+void Recv::sign_up()
+{
+    
 }

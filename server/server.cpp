@@ -20,9 +20,9 @@ void Server::Main_Func()
             }
             else
             {
-                user_data = events[i].data.ptr;
-                memset(buf, 0x00, BUF_SIZE);
-                read_cnt = read(user_data->fd, events);
+                *user_data = *(udata*)events[i].data.ptr;
+                memset(buf, 0x00, 1024);
+                read_cnt = read(user_data->fd, buf, 1024);
                 if(read_cnt<=0)
                 {
                     Disconnect();
@@ -30,7 +30,7 @@ void Server::Main_Func()
                 else
                 {
                     string clnt_msg(buf);
-                    Server::Recv_main(this, clnt_msg)
+                    Server::Recv_main(clnt_msg);
                 }
                 
             }

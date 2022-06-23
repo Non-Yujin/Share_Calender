@@ -2,6 +2,7 @@
 #define __EVENT_H_
 
 #include <string>
+#include <cstring>
 #include <netinet/in.h>
 #include <sys/epoll.h>
 #include <netinet/in.h>
