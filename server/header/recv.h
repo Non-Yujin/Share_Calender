@@ -17,7 +17,7 @@ class Recv
         void sign_up();
 
     private:
-        char query[1024];
+        char query[SIZE_CONST::BUF_SIZE];
         string clnt_msg;
 
 };

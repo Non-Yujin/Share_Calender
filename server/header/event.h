@@ -7,11 +7,13 @@
 #include <sys/epoll.h>
 #include <netinet/in.h>
 #include "sockset.h"
+#include "size.h"
 
 
 
 class Event : public Sock_set
 {
+    
     public:
         Event() {}
         ~Event() {}
@@ -22,8 +24,7 @@ class Event : public Sock_set
     protected:
         struct epoll_event ev, *events;
         int epoll_fd;
-        const int EPOLL_SIZE = 20;
-        int user_fds[1024];
+        int user_fds[SIZE_CONST::BUF_SIZE];
         int event_cnt;
     
 };

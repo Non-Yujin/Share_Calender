@@ -28,7 +28,7 @@ class Server : public Event, public Recv
         socklen_t clnt_len;
         udata *user_data;
         int port, client_fd, read_cnt, i;
-        char buf[1024];
+        char buf[SIZE_CONST::BUF_SIZE];
         
 
 };

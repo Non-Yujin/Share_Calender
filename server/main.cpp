@@ -10,7 +10,7 @@ int main(int argc, char * argv[])
         cout<<" Usage: "<<argv[0]<<" <port>\n";
         exit(1);
     }
-    Server serv(9010);
+    Server serv(SIZE_CONST::PORT_NUM);
 
     serv.Main_Func();
     

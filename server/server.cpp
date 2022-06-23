@@ -21,8 +21,8 @@ void Server::Main_Func()
             else
             {
                 *user_data = *(udata*)events[i].data.ptr;
-                memset(buf, 0x00, 1024);
-                read_cnt = read(user_data->fd, buf, 1024);
+                memset(buf, 0x00, SIZE_CONST::BUF_SIZE);
+                read_cnt = read(user_data->fd, buf, SIZE_CONST::BUF_SIZE);
                 if(read_cnt<=0)
                 {
                     Disconnect();
