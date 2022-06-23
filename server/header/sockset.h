@@ -1,5 +1,5 @@
-#ifndef __SOCK_SET_H_
-#define __SOCK_SET_H_
+#ifndef __SOCKSET_H_
+#define __SOCKSET_H_
 
 #include "addr.h"
 
