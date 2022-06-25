@@ -6,7 +6,6 @@ namespace SIZE_CONST
     enum
     {
         BUF_SIZE = 1024,
-        PORT_NUM = 9020,
         EPOLL_SIZE = 20
     };
 }
