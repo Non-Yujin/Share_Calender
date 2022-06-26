@@ -23,13 +23,14 @@ signup::~signup()
 
 void signup::on_check_btn_clicked()
 {
-    std::string send_data = "signup/" + ui->ID_text->text().toStdString();
-    if(send_data == "")
+    QString id = ui->ID_text->text();
+    if(id == "")
         QMessageBox::information(this, "error", "공백");
     else
     {
-        char msg[30];
+        std::string send_data = "signup/" + id.toStdString();
         write(sock, send_data.c_str(), sizeof(send_data));
+        char msg[30];
         read(sock, msg, sizeof(msg));
         if(strcmp(msg, "OK") == 0)
             check = true;
@@ -48,7 +49,7 @@ void signup::on_signup_btn_clicked()
             QMessageBox::information(this, "error", "공백");
         else
         {
-            if(ui->PW_text != ui->PW2_text)
+            if(ui->PW_text->text() != ui->PW2_text->text())
                 QMessageBox::information(this, "error", "비밀번호 불일치");
             else
             {

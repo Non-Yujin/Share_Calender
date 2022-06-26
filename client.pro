@@ -19,15 +19,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     login.cpp \
-    signup.cpp
+    signup.cpp \
+    widget.cpp
 
 HEADERS += \
     login.h \
-    signup.h
+    signup.h \
+    widget.h
 
 FORMS += \
     login.ui \
-    signup.ui
+    signup.ui \
+    widget.ui
 
 TRANSLATIONS += \
     client_ko_KR.ts
