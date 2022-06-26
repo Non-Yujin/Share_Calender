@@ -42,7 +42,6 @@ void login::on_login_btn_clicked()
         write(sock, send_data.c_str(), sizeof(send_data));
         read(sock, msg, sizeof(msg));
     }
-
 }
 
 void login::on_signup_btn_clicked()
