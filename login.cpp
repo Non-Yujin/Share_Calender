@@ -25,9 +25,9 @@ login::~login()
 
 void login::on_login_btn_clicked()
 {
-    //this->hide();
-    Widget w(sock);
-    w.show();
+    this->hide();
+    Widget *w = new Widget(sock);
+    w->show();
 //    QString id = ui->ID_text->text();
 //    QString pw = ui->PW_text->text();
 
