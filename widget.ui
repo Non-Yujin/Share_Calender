@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
+    <width>630</width>
     <height>487</height>
    </rect>
   </property>
@@ -31,9 +31,24 @@
     <rect>
      <x>40</x>
      <y>20</y>
-     <width>381</width>
+     <width>411</width>
      <height>281</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="gridVisible">
+    <bool>false</bool>
+   </property>
+   <property name="verticalHeaderFormat">
+    <enum>QCalendarWidget::NoVerticalHeader</enum>
+   </property>
+   <property name="navigationBarVisible">
+    <bool>true</bool>
+   </property>
+   <property name="dateEditEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QTextEdit" name="text">
@@ -49,7 +64,7 @@
   <widget class="QLabel" name="clock">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>470</x>
      <y>70</y>
      <width>131</width>
      <height>16</height>
@@ -62,7 +77,7 @@
   <widget class="QLabel" name="show_date_time">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>470</x>
      <y>30</y>
      <width>121</width>
      <height>16</height>
@@ -75,7 +90,7 @@
   <widget class="QDateEdit" name="date">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>470</x>
      <y>110</y>
      <width>151</width>
      <height>25</height>
@@ -95,7 +110,7 @@
   <widget class="QTimeEdit" name="time">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>470</x>
      <y>150</y>
      <width>151</width>
      <height>25</height>

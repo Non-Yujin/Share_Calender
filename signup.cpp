@@ -33,7 +33,12 @@ void signup::on_check_btn_clicked()
         char msg[30];
         read(sock, msg, sizeof(msg));
         if(strcmp(msg, "OK") == 0)
+        {
             check = true;
+            QMessageBox::information(this, "OK", "통과");
+        }
+        else
+            QMessageBox::information(this, "error", "중복");
     }
 }
 
@@ -56,6 +61,7 @@ void signup::on_signup_btn_clicked()
                 std::string send_data = "signup/" + ui->ID_text->text().toStdString() + "/" +
                     pw.toStdString() + "/" + name.toStdString();
                 write(sock, send_data.c_str(), sizeof(send_data));
+                QMessageBox::information(this, "축", "축) 가입");
                 this->close();
             }
         }
