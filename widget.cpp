@@ -1,9 +1,13 @@
 #include "widget.h"
 #include "./ui_widget.h"
 #include <QTimer>
-#include <cstring>
 #include <QDateTime>
 #include <QMessageBox>
+#include <cstring>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 Widget::Widget(int sock, QWidget *parent)
     : QWidget(parent)
@@ -32,39 +36,30 @@ Widget::~Widget()
 void Widget::show_time()
 {
     now = QTime::currentTime();//현재시간 받아오기
-    QString now_time = now.toString("AP hh시 mm분 ss초");//12시간 채제로 string형태로 저장
+    QString now_time = now.toString("hh시 mm분 ss초");//24시간 채제로 string형태로 저장
     ui->clock->setText(now_time);//라벨에 적용
 }
 
 void Widget::on_btn_clicked()//버튼 클릭시
 {
     QTime slt_time = ui->time->time();
-    QString time = slt_time.toString("AP hh시 mm분 - ");
-    QString str = time + ui->date_input->text()+ "\n";
-    auto item = saved_data.find(slt_date);
-    if(item != saved_data.end())//만약 key가 있을시
-    {
-        item->second += str;
-        ui->text->setText(item->second);
-    }else//없다면 insert로 추가
-        saved_data.insert(std::make_pair(slt_date,str));
-        ui->text->setText(str);
-    QMessageBox msgBox;
-    msgBox.setText(str);
-    msgBox.exec();
+    QString time = slt_time.toString("hh시 mm분");
+    QString str = time + ui->date_input->text();
+    std::string send_str = str.toStdString();
+    write(sock,send_str.c_str(),sizeof(send_str));
+    ui->text->append(str);
 }
 
-void Widget::on_calendar_clicked(const QDate &date)
+void Widget::on_calendar_clicked()
 {
-    slt_date = ui->calendar->selectedDate();//selectedDate의 반환값은 QDate이기에 같은 QDate형태에 저장
+    char msg[1024];
+    QDate slect_date = ui->calendar->selectedDate();//selectedDate의 반환값은 QDate이기에 같은 QDate형태에 저장
+    slt_date = slect_date.toString();
     ui->text->clear();
-    ui->date->setDate(slt_date);
-    auto item = saved_data.find(slt_date);
-    if(item != saved_data.end())
-    {
-        if(item->second.length() >= 1)//만약 key에 저장된 정보의 길이가 0 이상일 시
-        {
-            ui->text->setText(item->second);
-        }
-    }
+    ui->date->setDate(slect_date);
+    std::string str = slt_date.toStdString();
+    write(sock,str.c_str(),sizeof(str));
+    read(sock,msg,sizeof(msg));
+    if(strcmp(msg,"X")==-1)
+        ui->text->setText(QString::fromStdString(msg));
 }

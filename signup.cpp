@@ -1,8 +1,8 @@
 #include "signup.h"
 #include "ui_signup.h"
-#include <unistd.h>
-#include <cstring>
 #include <QMessageBox>
+#include <cstring>
+#include <unistd.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -28,7 +28,7 @@ void signup::on_check_btn_clicked()
         QMessageBox::information(this, "error", "공백");
     else
     {
-        std::string send_data = "signup/" + id.toStdString();
+        std::string send_data = "idcheck/" + id.toStdString();
         write(sock, send_data.c_str(), sizeof(send_data));
         char msg[30];
         read(sock, msg, sizeof(msg));
@@ -53,9 +53,10 @@ void signup::on_signup_btn_clicked()
                 QMessageBox::information(this, "error", "비밀번호 불일치");
             else
             {
-                std::string send_data = "signup/" + ui->ID_text->text().toStdString(); + "/" +
+                std::string send_data = "signup/" + ui->ID_text->text().toStdString() + "/" +
                     pw.toStdString() + "/" + name.toStdString();
                 write(sock, send_data.c_str(), sizeof(send_data));
+                this->close();
             }
         }
     }
