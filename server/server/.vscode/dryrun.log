@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/iot/바탕화면/server'
-make: Leaving directory '/home/iot/바탕화면/server'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
