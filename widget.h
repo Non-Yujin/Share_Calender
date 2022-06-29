@@ -28,7 +28,6 @@ class Widget : public QWidget
 public:
     Widget(int sock, QWidget *parent = nullptr);
     ~Widget();
-    std::map<QString,QString> saved_data;
 
 protected:
     QTime now;
@@ -36,6 +35,8 @@ protected:
     QDateTime datetime;
     QString date;
     QString slt_date;
+    QMessageBox msgBox;
+    std::vector<std::string> split_msg;
 
 private slots:
     void on_btn_clicked(); //버튼 클릭 시

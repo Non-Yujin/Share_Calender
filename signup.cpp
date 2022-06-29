@@ -1,6 +1,7 @@
 #include "signup.h"
 #include "ui_signup.h"
 #include <QMessageBox>
+#include <QPixmap>
 #include <cstring>
 #include <unistd.h>
 #include <arpa/inet.h>
@@ -11,9 +12,11 @@ signup::signup(int sock, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::signup)
 {
+    ui->setupUi(this);
     check = false;
     this->sock = sock;
-    ui->setupUi(this);
+    QPixmap pix("/home/iot/C++/None_YuJin/client/img/signup.jpg");
+    ui->label_5->setPixmap(pix);
 }
 
 signup::~signup()
