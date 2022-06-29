@@ -9,24 +9,23 @@ void Recv::Recv_main(udata* userdata, string msg)
 {
     clnt_msg = msg;
     user_data = userdata;
-    cout<<"바로"<<clnt_msg<<endl;
-    if(clnt_msg.find("login") != string::npos)
+    if(clnt_msg.find("login") == 0)
     {
         login();
     }
-    else if(clnt_msg.find("idcheck") != string::npos)
+    else if(clnt_msg.find("idcheck") == 0)
     {
         id_check();
     }
-    else if(clnt_msg.find("signup") != string::npos)
+    else if(clnt_msg.find("signup") == 0)
     {
         sign_up();
     }    
-    else if(clnt_msg.find("choose_date") != string::npos)
+    else if(clnt_msg.find("choose_date") == 0)
     {
         choose_date();
     }
-    else if(clnt_msg.find("update") != string::npos)
+    else if(clnt_msg.find("update") == 0)
     {        
         update();
     }
@@ -123,7 +122,6 @@ void Recv::choose_date()
             sprintf(date_contents, "[%s] %s/", sql_row[1], sql_row[2]);
             write(user_data->fd, date_contents, sizeof(date_contents));
             cout<<date_contents<<endl;
-            return;
         }         
         write(user_data->fd,"X",sizeof("X"));   
         cout<<"X"<<endl;  
