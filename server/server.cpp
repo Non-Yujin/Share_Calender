@@ -20,22 +20,22 @@ void Server::Main_Func()
             }
             else
             {
-                *user_data = *(udata*)events[i].data.ptr;
-                memset(buf, 0x00, 1024);
-                read_cnt = read(user_data->fd, buf, 1024);
+                user_data = (udata*)events[i].data.ptr;
+                memset(buf, 0x00, SIZE_CONST::BUF_SIZE);
+                read_cnt = read(user_data->fd, buf, SIZE_CONST::BUF_SIZE);
                 if(read_cnt<=0)
                 {
                     Disconnect();
                 }
-                else
+                else    
                 {
+                    cout<<"buf:"<<buf<<endl;
                     string clnt_msg(buf);
-                    Server::Recv_main(clnt_msg);
+                    Server::Recv_main(user_data, clnt_msg);
                 }
                 
             }
         }
-
     }
 }
 

@@ -10,7 +10,8 @@ int main(int argc, char * argv[])
         cout<<" Usage: "<<argv[0]<<" <port>\n";
         exit(1);
     }
-    Server serv(9010);
+    int port = atoi(argv[1]);
+    Server serv(port);
 
     serv.Main_Func();
     

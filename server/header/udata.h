@@ -8,7 +8,7 @@ using namespace std;
 typedef struct
 {
     int fd;
-    string name;
+    char name[30];
 }udata;
 
 #endif
