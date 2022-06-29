@@ -22,7 +22,8 @@ class Recv : public Database
         void login();
         void id_check();
         void sign_up();        
-        void date();
+        void choose_date();
+        void update();
 
     private:
         char query[SIZE_CONST::BUF_SIZE];

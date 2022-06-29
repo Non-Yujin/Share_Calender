@@ -29,6 +29,7 @@ void Server::Main_Func()
                 }
                 else    
                 {
+                    cout<<"buf:"<<buf<<endl;
                     string clnt_msg(buf);
                     Server::Recv_main(user_data, clnt_msg);
                 }
