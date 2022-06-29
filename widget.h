@@ -39,9 +39,9 @@ protected:
     std::vector<std::string> split_msg;
 
 private slots:
-    void on_btn_clicked(); //버튼 클릭 시
     void show_time();// 현재 시간 보여주기
     void on_calendar_clicked();//캘린더를 클릭했을 시
+    void on_btn_clicked(); //버튼 클릭 시
     std::vector<std::string> sort(std::vector<std::string>str);
     std::vector<std::string> split(std::string str, char Delimiter);
 

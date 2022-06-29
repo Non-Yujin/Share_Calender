@@ -86,10 +86,15 @@ void Widget::on_btn_clicked()//버튼 클릭시
     if(check_msg.find(str.toStdString())== std::string::npos){
         QDate slect_date = ui->calendar->selectedDate();//selectedDate의 반환값은 QDate이기에 같은 QDate형태에 저장
         slt_date = slect_date.toString("yyyy년 MM월 dd일/");
-        ui->date_input->clear();
         std::string send_str = "update/" + slt_date.toStdString() + str.toStdString();
+
         write(sock,send_str.c_str(),send_str.size()+1);
-        //Widget::on_calendar_clicked();
+
+        msgBox.setText(time+"\n"+ui->date_input->text()+"\n일정이 추가 되었습니다");
+        ui->date_input->clear();
+        msgBox.exec();
+
+        Widget::on_calendar_clicked();
     }else
     {
         msgBox.setText("같은 시간대에 같은 일정이 있습니다");
@@ -108,6 +113,9 @@ void Widget::on_calendar_clicked()
     ui->date->setDate(slect_date);
     std::string str = "choose_date/" + slt_date.toStdString();
     write(sock,str.c_str(),str.size());
+
+    usleep(10000);
+
     while(1){
         read(sock,msg,sizeof(msg));
         if(strcmp(msg,"X")==0)
